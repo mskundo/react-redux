@@ -1,0 +1,22 @@
+body{
+    background-color: azure;
+    padding: 30px;
+}
+
+.header{
+    background-color: whitesmoke;
+}
+
+ul{
+    display: inline;
+    list-style-type: none;
+}
+
+.active{
+    color: blue;
+}
+
+li :hover{
+    color: red;
+    text-decoration: none;
+}
