@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Customer from './components/Customer'
+import SaveUser from './components/SaveUser'
 import './App.css';
 
 class App extends Component {
@@ -10,6 +11,7 @@ class App extends Component {
           <h1 className="App-title">Customers</h1>
         </header>
         <Customer />
+        <SaveUser />
       </div>
     );
   }
