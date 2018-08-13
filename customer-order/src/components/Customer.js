@@ -1,33 +1,36 @@
 import React, {Component} from 'react'
+import DisplayUser from './DisplayUser'
+import {connect} from 'react-redux'
+//import {bindActioncreators} from 'redux'
+//import {getCustomer} from '../actions/index'
 
 class Customer extends Component {
-    state = {  }
     render() { 
+        let allusers=[]
+        allusers=this.props.customers.map((customer)=>(
+            <DisplayUser key={'customer=' + customer.id}
+            myId={customer.id}
+            myName={customer.name} 
+            >
+            </DisplayUser>
+        ));
+        
         return ( 
             <div>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Name:</td>
-                            <td>Address Line 1:</td>
-                            <td>Address Line 2:</td>
-                            <td>Post Code</td>
-                            <td>Age</td>
-                        </tr>
-
-                        <tr>
-                            <td><input type="text"/></td>
-                            <td><input type="text"/></td>
-                            <td><input type="text"/></td>
-                            <td><input type="text"/></td>
-                            <td><input type="text"/></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <ul>
+                {allusers}
                     
+            </ul>
             </div>
          );
     }
 }
  
-export default Customer;
+function mapStateToProps(state){
+    return{
+        customers: state.customers
+    }
+}
+
+
+export default connect(mapStateToProps)(Customer);

@@ -7,9 +7,9 @@ const reducer=combineReducers({
 });
 
 
-const initialState={
-    DisplayReducer:{get_customer:null}
-};
+// const initialState={
+//     DisplayReducer:{get_customer:null}
+// };
 
-let store = createStore(reducer, initialState);
+const store = createStore(reducer);
 export default store;

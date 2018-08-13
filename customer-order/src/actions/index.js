@@ -1,5 +1,7 @@
-export const getCustomer=()=>{
+export const getCustomer=(customers)=>{
+  
     return{
-        type:'get',
+        type:'User_get',
+        payload : customers
     }
 }
