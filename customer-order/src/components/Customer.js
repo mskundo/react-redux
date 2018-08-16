@@ -5,7 +5,11 @@ import { connect } from 'react-redux'
 //import {getCustomer} from '../actions/index'
 import * as actions from '../actions'
 
-class Customer extends Component {
+export default class Customer extends Component {
+    componentWillMount() {
+        console.log("WillUnmount")
+        console.log(this.props.customers)
+    }
     componentDidMount() {
         console.log("DidMount")
         console.log(this.props.customers)
@@ -26,58 +30,58 @@ class Customer extends Component {
         console.log("WillUnmount")
         console.log(this.props.customers)
     }
-    allusers(){
-        return (this.props.customers === undefined) ? [] : this.props.customers.map((customer) => {
-        console.log("all ser");
-        console.log(this.props.customers);
-        <DisplayUser key={'customer=' + customer.id}
-            myId={customer.id}
-            myName={customer.name}
-        >
-        </DisplayUser>
-    });
-}
     render() {
 
-        console.log(this.props.customers)
-        console.log("customer")
-        const { onGetCustomer} = this.props
-        // let allusers = []
+
+        const {getC, customers} =this.props
+        console.log("in render "+ customers)
+    
+        let allusers = []
+        allusers= (customers === undefined) ? [] : customers.map((customer) => {
+            console.log("all ser");
+            console.log(customers);
+            <DisplayUser key={'customer=' + customer.id}
+                myId={customer.id}
+                myName={customer.name}
+            >
+            </DisplayUser>
+        });
         
 
 
         return (
             <div>
                 <ul>
-                    {this.allusers()}
+                    {allusers}
 
                 </ul>
-                <button onClick={onGetCustomer}>Submit</button>
-                <input type="text" value={this.props.customers}/>
+                <button onClick={getC}>Submit</button>
+                <input type="text" value={customers}/>
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-     console.log("mapstatetoprop", state)
-    return {
+// function mapStateToProps(state) {
+//      console.log("mapstatetoprop", state.customers)
+//     return {
         
-        customers: state
-    }
-}
+//         customers: state.customers
+//     }
+// }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        onGetCustomer: () => dispatch(actions.getCustomer()),
-    }
-}
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         // onGetCustomer: () => dispatch(actions.getCustomer()),
+//         onGetCustomer: () => dispatch({type:'User_get'})
+//     }
+// }
 
 //export default connect(mapStateToProps)(Customer);
-const VisibleCounter = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Customer);
+// const VisibleCounter = connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(Customer);
 
 
-export default VisibleCounter;
+// export default VisibleCounter;

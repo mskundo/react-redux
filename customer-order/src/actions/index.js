@@ -1,4 +1,4 @@
-export const getCustomer=()=>{
+export const getCustomer= () => {
   
     return{
         type:'User_get',
@@ -20,4 +20,11 @@ export const addCustomer=(name,addressLine1,addressLine2,postCode,age)=>{
         payload:customerData
     }
 
+}
+
+export const deleteCustomer=(id)=>{
+  
+    return{
+        type:'User_delete',
+    }
 }

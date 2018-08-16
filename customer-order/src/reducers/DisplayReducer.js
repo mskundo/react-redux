@@ -1,24 +1,32 @@
 import React from 'react'
 import axios from 'axios'
 
-export default function DisplayReducer(state = [], action) {
-    // const customers = state.customers
+export default function DisplayReducer(state = {customers : []}, action) {
+     //let customers = state.customers
+     let xyz = state.customers
     switch (action.type) {
+        
         case 'User_get':
-            axios.get("https://customer-service-madhu.cfapps.io/customers").then((res) => {
-                console.log(res.data)
-                return res.json();
-                
+            axios.get("https://customer-service-madhu.cfapps.io/customers").then((res)=>{
+                console.log("response" + res.data)
+                xyz= res.data
+                console.log("customers xyz " + xyz)
             })
-           // return state
-
+            console.log("dhjdfh")
+            return {
+                ...state,
+                customers : xyz
+            }
+            
+     
         case 'User_add':
             console.log(action.payload)
-            axios.post("https://customer-service-madhu.cfapps.io/customers", action.payload).then((res) => {
-                console.log(res.data)
-                console.log("Successfully added")
-            })
+            axios.post("https://customer-service-madhu.cfapps.io/customers", action.payload)
             return state
+      
+        // case 'User_delete':
+        //     axios.post("https://customer-service-madhu.cfapps.io/customers"+"/"+id)
+        //     return state
 
 
         default:

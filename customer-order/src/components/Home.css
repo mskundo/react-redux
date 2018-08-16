@@ -1,0 +1,24 @@
+.header{
+    float:left;
+    text-decoration: none;
+}
+
+
+
+.header{
+    background-color: whitesmoke;
+}
+
+ul{
+    display: inline;
+    list-style-type: none;
+}
+
+.active{
+    color: blue;
+}
+
+li :hover{
+    color: red;
+    text-decoration: none;
+}
